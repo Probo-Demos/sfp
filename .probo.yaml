@@ -1,0 +1,12 @@
+assets:
+  - dev.sql.gz
+steps:
+  - name: Probo site setup
+    plugin: Drupal
+    database: dev.sql.gz
+    databaseGzipped: true
+    databaseUpdates: true
+ 
+  - name: Enable stage_file_proxy
+    command: 'drush --root="/var/www/sfp/webroot" en stage_file_proxy -y'
+    command: 'drush variable-set stage_file_proxy_origin "http://www.sfp.com"'
